@@ -1,39 +1,39 @@
 {
-	"name": "angular-architecture-validator",
-	"displayName": "Angular Architecture Validator",
-	"icon": "images/language-services.png",
-	"description": "Validates a set of rules that define a custom achitecture for an Angular project.",
-	"version": "1.0.2",
-	"publisher": "SebastianGarcia-UniAndes",
-	"license": "MIT",
-	"engines": {
-		"vscode": "^1.32.0"
-	},
-	"repository": {
-		"url": "https://github.com/SELF-Software-Evolution-Lab/AngularArchitectureValidator"
-	},
-	"categories": [
-		"Snippets",
-		"Linters",
-		"Other",
-		"Education"
-	],
-	"activationEvents": [
-		"*"
-	],
-	"main": "./out/extension.js",
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"lint": "eslint . --ext .ts,.tsx",
-		"watch": "tsc -watch -p ./"
-	},
-	"devDependencies": {
-		"@types/node": "^12.12.0",
-		"@typescript-eslint/eslint-plugin": "^3.0.2",
-		"@typescript-eslint/parser": "^3.0.2",
-		"eslint": "^7.1.0",
-		"typescript": "^4.0.2",
-		"@types/vscode": "^1.32.0"
-	}
+  "name": "angular-architecture-validator",
+  "displayName": "Angular Architecture Validator",
+  "icon": "images/language-services.png",
+  "description": "Validates a set of rules that define a custom achitecture for an Angular project.",
+  "version": "1.0.2",
+  "publisher": "SebastianGarcia-UniAndes",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.32.0"
+  },
+  "repository": {
+    "url": "https://github.com/SELF-Software-Evolution-Lab/AngularArchitectureValidator"
+  },
+  "categories": [
+    "Snippets",
+    "Linters",
+    "Other",
+    "Education"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/extension.js",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "lint": "eslint . --ext .ts,.tsx",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.0",
+    "@typescript-eslint/eslint-plugin": "^3.0.2",
+    "@typescript-eslint/parser": "^3.0.2",
+    "eslint": "^7.1.0",
+    "typescript": "^4.0.2",
+    "@types/vscode": "^1.32.0"
+  }
 }
