@@ -1,0 +1,14 @@
+.card-header button {
+  background-color: #efefef !important;
+}
+
+.card-body .badge {
+  background-color: #efefef !important;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 5px 10px;
+}
+
+.card-body .badge i {
+  margin-right: 4px;
+}

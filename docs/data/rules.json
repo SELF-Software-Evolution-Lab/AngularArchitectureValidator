@@ -1,0 +1,101 @@
+[
+	{
+		"id": "R1",
+		"title": "Entity Components - Actions: Incorrect folder name.",
+		"lable": "Entities",
+		"time": "10 MIN.",
+		"level": "MINOR",
+		"description": "Each component must have a sub-directory describing a specific (CRUD) action. The folder should be named following the structure: module-action.",
+		"solution": "Rename the file's directory in order to follow the module-action naming convention. For example the actions defined in the arc.config.json file are 'create', 'detail', 'delete'; a valid sub-directory name for a component named 'student' would be: student-create, student-detail or student-delete. Therefore, the student-create/ directory would include the student-create.component.ts file (as well as other files, i.e. the spec file, styling file, template file)."
+	},
+	{
+		"id": "R2",
+		"title": "Entity Components - Files: Component is missing a file. ",
+		"lable": "Entities",
+		"time": "10 MIN.",
+		"level": "MINOR",
+		"description": "In the arc.config.json file, components must define the files that are going to be required. The files are: a styling file (.css, .sass, etc), a template file (.html), a testing file (.spec). ",
+		"solution": "Create the missing file under the corresponding component. For example, if a 'student-create' component has the following warning: Component missing dto spec file: student-create.spec.ts. The solution would be to add a file named 'student-create.spec.ts' inside the student-create/ directory."
+	},
+	{
+		"id": "R3",
+		"title": "Entity Module: Component missing module file.",
+		"lable": "Entities",
+		"time": "10 MIN.",
+		"level": "MINOR",
+		"description": "In the arc.config.json file, an entity defines if a module is required.",
+		"solution": "Create the missing module file under the corresponding component. For example, a 'student' module would require a 'student.module.t's file."
+	},
+	{
+		"id": "R4",
+		"title": "Entity Module: Component missing dto and/or dto.spec file.",
+		"lable": "Entities",
+		"time": "10 MIN.",
+		"level": "MINOR",
+		"description": "In the arc.config.json file, an entity defines if a dto and/pr dto.spec file is required. The .dto.ts file works as an interface for a Data Type Object. Whereas, a .dto.spec.ts file would be the testing file.",
+		"solution": "Create the missing dto and/or dto.spec file under the corresponding component. For example, a 'student' module would require a student.dto.ts and/or student.dto.spec.ts file if required."
+	},
+	{
+		"id": "R5",
+		"title": "Entity Module: Component missing service file.",
+		"lable": "Entities",
+		"time": "10 MIN.",
+		"level": "MINOR",
+		"description": "In the arc.config.json file, an entity defines if a service file is required. A service is a singleton object that gets instantiated only once during the lifetime of an application. Services files contain methods that maintain data throughout the life of an application, i.e. data does not get refreshed and is available all the time. The main objective of a service is to organize and share business logic, models, or data and functions with different components of an Angular application.",
+		"solution": "Create the missing .service.ts and/or .service.spec.ts file under the corresponding component. For example, a 'student' module would require a student.service.ts and/or student.service.spec.ts file if required."
+	},
+	{
+		"id": "R6",
+		"title": "App Routing: Missing routing file.",
+		"lable": "App",
+		"time": "10 MIN.",
+		"level": "MINOR",
+		"description": "In the arc.config.json file, an app defines if a routing file is required. In a Single Page Application (SPA), all of the application's functions exist in a single HTML page. Routes are used to define how users navigate through the application.",
+		"solution": "Create the missing app-routing.module.ts file. See the Angular's Add Navigation with Routing Tutorial https://angular.io/tutorial/toh-pt5"
+	},
+	{
+		"id": "R7",
+		"title": "App Module: Missing module file.",
+		"lable": "App",
+		"time": "10 MIN.",
+		"level": "MINOR",
+		"description": "In the arc.config.json file, an app defines if an app.module.ts file is required.",
+		"solution": "Create the missing app.module.ts file. See the Angular's Introduction to Modules https://angular.io/guide/architecture-modules"
+	},
+	{
+		"id": "R8",
+		"title": "App Component: Spec, HTML and styles.",
+		"lable": "App",
+		"time": "10 MIN.",
+		"level": "MINOR",
+		"description": "In the arc.config.json file, an app defines if a testing .spec.ts file, a template .html file or if a styling .css (see R9) file is required for the app module.",
+		"solution": "Create the missing files. For example, the 'app.component.spec.ts' file, or the 'app.component.html' file, or the 'app.component.css' (for styling see R9) file, based on the arc.config.json specifications defined."
+	},
+	{
+		"id": "R9",
+		"title": "App Styling: styles.",
+		"lable": "App",
+		"time": "10 MIN.",
+		"level": "MINOR",
+		"description": "In the arc.config.json file, an app defines the type os styling used in the application. The styling can be 'css', 'sass', 'less', ect.",
+		"solution": "Define the styling to be used. For example, for 'css' applications, use .css files; for 'sass' applications, use .sass files, etc."
+	},
+	{
+		"id": "R10",
+		"title": "Documentation: Attributes.",
+		"lable": "Docs",
+		"time": "10 MIN.",
+		"level": "MINOR",
+		"description": "This rule covers documentation of attributes following a /** Some text */ style. Furthermore, this rule covers the attribute's access: TypeScript includes the keywords public, protected, and private to control access to the members of a class i.e. properties or methods. Class members marked public can be accessed from the internal class methods as well as from the external scripts. This is a default access. Class members marked as protected can be accessed either from the internal class methods or from its descendants. The private class members can be accessed from within the class only.",
+		"solution": "If attribute visibility is missing: While defining class properties, add the public, protected or private keyword. For example, the 'students-create' component property 'lastName: string;' should be 'public lastName: string;'. If documentation is missing: add a commented line just before an attribute - /** Simple purpose of the following attribute. */"
+	},
+	{
+		"id": "R10",
+		"title": "Documentation: Functions.",
+		"lable": "Docs",
+		"time": "10 MIN.",
+		"level": "MINOR",
+		"description": "Defines if functions should be documented as /** Some text */",
+		"solution": "If documentation is missing: add a commented line just before a function - /** Briefly explain how the following function is supposed to work. (Tip: don't explain what the function does, but rather < how > the function does it.) */"
+	}
+]

@@ -1,0 +1,26 @@
+{
+  "name": "@carlos_patino-uniandes/angular-architecture-validator",
+  "version": "1.0.0",
+  "description": "The objective of the proposal is to provide the developer with a tool that allows him to visualize and understand the problems or violations in the previously defined architecture as he builds a web software product using the Angular framework. The tool will use the architecture defined by the developer to validate the code that is being written, the interactions between components, and other rules that the developer determines as relevant and wishes to maintain during the complete development cycle of the project.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chpatinos/Angular-plugin.git"
+  },
+  "keywords": [
+    "angular",
+    "architecture"
+  ],
+  "author": "Carlos Patiño",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1"
+  },
+  "bugs": {
+    "url": "https://github.com/chpatinos/Angular-plugin/issues"
+  },
+  "homepage": "https://github.com/chpatinos/Angular-plugin#readme"
+}

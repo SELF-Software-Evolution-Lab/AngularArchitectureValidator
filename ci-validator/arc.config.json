@@ -1,0 +1,32 @@
+{
+  "entity": {
+    "components": {
+      "actions": ["list", "create", "detail", "update", "delete"],
+      "files": {
+        "styles": true,
+        "html": true,
+        "spec": true
+      }
+    },
+    "module": true,
+    "dto": true,
+    "dtoSpec": true,
+    "service": true,
+    "serviceSpec": true
+  },
+  "app": {
+    "routing": true,
+    "module": true,
+    "component": {
+      "spec": true,
+      "html": true,
+      "styles": true,
+      "ts": true
+    },
+    "styles": "css"
+  },
+  "documentation": {
+    "attributes": true,
+    "functions": true
+  }
+}
