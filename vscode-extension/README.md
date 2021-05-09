@@ -104,7 +104,7 @@ Once the above rules are defined, you can start coding. If your code does not sa
 
 [r10-1]: https://github.com/SELF-Software-Evolution-Lab/AngularArchitectureValidator/blob/main/images/r10-1.png?raw=true 'Missing attribute visibility warning.'
 [r10-2]: https://github.com/SELF-Software-Evolution-Lab/AngularArchitectureValidator/blob/main/images/r10-2.png?raw=true 'Missing documentation warning.'
-[r10-solved]: https://github.com/SELF-Software-Evolution-Lab/AngularArchitectureValidator/blob/main/images/r10-solved.png?raw=true) 'R10 Solved.'
+[r10-solved]: https://github.com/SELF-Software-Evolution-Lab/AngularArchitectureValidator/blob/main/images/r10-solved.png?raw=true 'R10 Solved.'
 
 <br/>
 
