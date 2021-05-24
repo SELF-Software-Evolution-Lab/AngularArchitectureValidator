@@ -25,7 +25,6 @@ Download the VS Code Extension [Angular Architecture Validator](https://marketpl
 		},
 		"module": true,
 		"dto": true,
-		"dto.spec": true,
 		"service": true,
 		"service.spec": true
 	},
