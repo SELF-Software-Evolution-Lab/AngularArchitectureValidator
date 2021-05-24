@@ -286,7 +286,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     if (hooverMessage) {
       const startPos = activeEditor.document.positionAt(0);
-      const endPos = activeEditor.document.positionAt(50);
+      const endPos = activeEditor.document.positionAt(6);
       const decoration = {
         range: new vscode.Range(startPos, endPos),
         hoverMessage: hooverMessage,
