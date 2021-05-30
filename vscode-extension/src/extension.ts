@@ -101,10 +101,28 @@ export function activate(context: vscode.ExtensionContext) {
 
   let activeEditor = vscode.window.activeTextEditor;
 
+  const outChannel = vscode.window.createOutputChannel(
+    "Angular Architecture Validator Output"
+  );
+
   async function updateDecorations() {
     if (!activeEditor) {
       return;
     }
+
+    // * [1] Buscar el MODULE entre los archivos del mismo directorio
+    const _path_: string = activeEditor?.document.uri.path || "";
+    const fragments: string[] = _path_.split("/");
+    const fragments_backup = [...fragments];
+
+    // * APP FILES
+    const indexApp: number = fragments.findIndex((item) => `${item}` === "app");
+    if (indexApp < 0) return;
+
+    const validFileExts: string[] = ["js", "ts"]; // archivos sobre los cuales se ponen warnings
+    const _pathDotSplit: string[] = _path_.split(".");
+    const fileExt: string = _pathDotSplit[_pathDotSplit.length - 1] || "";
+    if (!validFileExts.includes(fileExt.toLowerCase())) return;
 
     // * [0] Configuation File
     const configGlob: string = `**/arc.config.json`;
@@ -196,15 +214,6 @@ export function activate(context: vscode.ExtensionContext) {
         }
       });
 
-    // * [1] Buscar el MODULE entre los archivos del mismo directorio
-    const _path_: string = activeEditor?.document.uri.path || "";
-    const fragments: string[] = _path_.split("/");
-    const fragments_backup = [...fragments];
-
-    // * APP FILES
-    const indexApp: number = fragments.findIndex((item) => `${item}` === "app");
-    if (indexApp < 0) return;
-
     // * Verificacion de archivos APP MODULE
 
     let validRouting: boolean = true;
@@ -215,7 +224,8 @@ export function activate(context: vscode.ExtensionContext) {
 
     let filesInCurrentDir: string[] = [];
     const appFileArray: string[] = [...fragments];
-    appFileArray.pop();
+    appFileArray.length = indexApp + 1;
+
     try {
       fs.readdirSync(appFileArray.join("/")).forEach((file: string) => {
         filesInCurrentDir.push(file);
@@ -231,6 +241,7 @@ export function activate(context: vscode.ExtensionContext) {
         console.log("Catched Error reading file dir.", error);
       }
     }
+
     if (filesInCurrentDir.some((file) => `${file}`.includes(".component.ts"))) {
       validRouting = filesInCurrentDir.some((file) =>
         `${file}`.includes("app-routing.module.ts")
@@ -293,6 +304,7 @@ export function activate(context: vscode.ExtensionContext) {
       };
       classNameWarnings.push(decoration);
       activeEditor.setDecorations(warningDecorator, classNameWarnings);
+      outChannel.appendLine(hooverMessage);
     }
 
     // * Verificaciones APP/COMPONENTS
@@ -498,6 +510,7 @@ export function activate(context: vscode.ExtensionContext) {
           };
           classNameWarnings.push(decoration);
           activeEditor.setDecorations(warningDecorator, classNameWarnings);
+          outChannel.appendLine(hooverMessage);
         }
 
         const text = activeEditor.document.getText();
@@ -523,10 +536,15 @@ export function activate(context: vscode.ExtensionContext) {
             classNameWarnings.push(decoration);
           }
           activeEditor.setDecorations(warningDecorator, classNameWarnings);
+          outChannel.appendLine(hooverMessage);
         }
 
         // * Verificación en documentación de atributos
-        if (DOCUMENTATION_ATTRS) {
+        const isTestFile: boolean = activeEditor.document
+          .getText()
+          .includes("@angular/core/testing");
+
+        if (DOCUMENTATION_ATTRS && !isTestFile) {
           const textLines: string[] = text.split("\n");
           textLines.forEach((line, index) => {
             // * Verificación en visibilidad de atributos (public | private | protected)
@@ -553,6 +571,7 @@ export function activate(context: vscode.ExtensionContext) {
                   hoverMessage: `\n* Missing attribute visibility. [ public | private | protected ]`,
                 };
                 classNameWarnings.push(decoration);
+                outChannel.appendLine(decoration.hoverMessage);
               }
               //	activeEditor.setDecorations(warningDecorator, classNameWarnings);
             }
@@ -566,6 +585,8 @@ export function activate(context: vscode.ExtensionContext) {
               !line.includes("/*") &&
               !line.includes("this") &&
               !line.includes("if") &&
+              !line.includes(".") &&
+              !line.includes("await") &&
               (line.includes("private") ||
                 line.includes("public") ||
                 line.includes("protected") ||
@@ -594,6 +615,7 @@ export function activate(context: vscode.ExtensionContext) {
                       hoverMessage: `/** Missing documentation. */`,
                     };
                     classNameWarnings.push(decoration);
+                    outChannel.appendLine(decoration.hoverMessage);
                   }
                 }
               }

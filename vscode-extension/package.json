@@ -3,7 +3,7 @@
   "displayName": "Angular Architecture Validator",
   "icon": "images/language-services.png",
   "description": "Validates a set of rules that define a custom achitecture for an Angular project.",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "publisher": "SebastianGarcia-UniAndes",
   "license": "MIT",
   "engines": {
