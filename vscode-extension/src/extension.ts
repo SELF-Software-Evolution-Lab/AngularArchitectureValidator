@@ -290,7 +290,7 @@ export function activate(context: vscode.ExtensionContext) {
     if (APP_COMPONENT_STYLE && !validAppStyle) {
       hooverMessage += `\n* Missing app style file: app.component.${APP_STYLING}`;
     } else if (!APP_COMPONENT_STYLE && validAppStyle) {
-      hooverMessage += `\n* Aapp style file is not required: app.component.${APP_STYLING}`;
+      hooverMessage += `\n* App style file is not required: app.component.${APP_STYLING}`;
     }
 
     const classNameWarnings: vscode.DecorationOptions[] = [];
@@ -417,11 +417,9 @@ export function activate(context: vscode.ExtensionContext) {
         const fileCrudAction: string = fileName[1] || "";
 
         let fileType = fileFragment;
-
         let fileActionName: string = fileCrudAction;
 
         const classNameWarnings: vscode.DecorationOptions[] = [];
-
         let hooverMessage: string = "";
 
         // * Verificación de modulo existente
@@ -468,9 +466,9 @@ export function activate(context: vscode.ExtensionContext) {
 
         // * Verificación de template HTML
         if (ENTITY_FILES_SPEC && !validSpecs) {
-          hooverMessage += `\n* Component missing spce file: .spec.ts`;
+          hooverMessage += `\n* Component missing spec file: .spec.ts`;
         } else if (!ENTITY_FILES_SPEC && validSpecs) {
-          hooverMessage += `\n* Component spce file is not required: .spec.ts`;
+          hooverMessage += `\n* Component spec file is not required: .spec.ts`;
         }
 
         // * Verificación en nombre de directorio - módulo
@@ -510,6 +508,8 @@ export function activate(context: vscode.ExtensionContext) {
           };
           classNameWarnings.push(decoration);
           activeEditor.setDecorations(warningDecorator, classNameWarnings);
+
+          outChannel.appendLine(_path_);
           outChannel.appendLine(hooverMessage);
         }
 
@@ -536,6 +536,8 @@ export function activate(context: vscode.ExtensionContext) {
             classNameWarnings.push(decoration);
           }
           activeEditor.setDecorations(warningDecorator, classNameWarnings);
+
+          outChannel.appendLine(_path_);
           outChannel.appendLine(hooverMessage);
         }
 
@@ -571,6 +573,8 @@ export function activate(context: vscode.ExtensionContext) {
                   hoverMessage: `\n* Missing attribute visibility. [ public | private | protected ]`,
                 };
                 classNameWarnings.push(decoration);
+
+                outChannel.appendLine(_path_);
                 outChannel.appendLine(decoration.hoverMessage);
               }
               //	activeEditor.setDecorations(warningDecorator, classNameWarnings);
@@ -615,6 +619,8 @@ export function activate(context: vscode.ExtensionContext) {
                       hoverMessage: `/** Missing documentation. */`,
                     };
                     classNameWarnings.push(decoration);
+
+                    outChannel.appendLine(_path_);
                     outChannel.appendLine(decoration.hoverMessage);
                   }
                 }
